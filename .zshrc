@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export TERM="xterm-256color" # This sets up colors properly
 
 # set shell
@@ -29,16 +36,16 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE='awesome-fontconfig'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs nvm )
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(disk_usage time battery)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status load ram disk_usage time battery)
 
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_SHOW_RULER=true
 POWERLEVEL9K_RULER_CHAR='─'
 POWERLEVEL9K_RULER_BACKGROUND=none
 POWERLEVEL9K_RULER_FOREGROUND=237
 
-POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=' #'
+POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=' '
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=
 POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=' '
 POWERLEVEL9K_RIGHT_SEGMENT_END_SEPARATOR=
@@ -198,3 +205,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi="nvim.appimage"
 alias nvim="nvim.appimage"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
